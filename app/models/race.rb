@@ -1,5 +1,6 @@
 class Race < ApplicationRecord
   validates :name, presence: true, uniqueness: true
+  belongs_to :character
 end
 
 

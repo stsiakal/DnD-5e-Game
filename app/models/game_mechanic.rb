@@ -1,0 +1,2 @@
+class GameMechanic < ApplicationRecord
+end
