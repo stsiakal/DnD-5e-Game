@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_28_100618) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_29_172709) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,26 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_28_100618) do
   end
 
   create_table "equipment", force: :cascade do |t|
-    t.string "index"
-    t.string "name"
-    t.string "url"
-    t.text "desc", default: [], array: true
-    t.jsonb "equipment_category", default: {}, null: false
-    t.string "weapon_category"
-    t.string "weapon_range"
-    t.string "category_range"
-    t.jsonb "range", default: {}, null: false
-    t.jsonb "damage", default: {}, null: false
-    t.jsonb "two_handed_damage", default: {}, null: false
-    t.jsonb "properties", default: {}, null: false
-    t.jsonb "cost", default: {}, null: false
-    t.integer "weight"
-    t.string "armor_category"
-    t.jsonb "armor_class", default: {}, null: false
-    t.integer "str_minimum"
-    t.boolean "stealth_disadvantage", default: false
-    t.jsonb "gear_category", default: {}, null: false
-    t.jsonb "contents", default: {}, null: false
+    t.jsonb "categories", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -168,6 +149,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_28_100618) do
     t.jsonb "school", default: {}, null: false
     t.jsonb "classes", default: {}, null: false
     t.jsonb "subclasses", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "traits", force: :cascade do |t|
+    t.string "index"
+    t.string "name"
+    t.string "desc", default: [], array: true
+    t.jsonb "races", default: {}, null: false
+    t.jsonb "subraces", default: {}, null: false
+    t.jsonb "proficiencies", default: {}, null: false
+    t.jsonb "proficiency_choices", default: {}, null: false
+    t.jsonb "trait_specific", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
