@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_29_172709) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_31_110729) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_29_172709) do
     t.string "desc"
     t.string "full_name"
     t.jsonb "skills", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "character_classes", force: :cascade do |t|
+    t.string "index"
+    t.string "name"
+    t.integer "hit_die"
+    t.jsonb "class_levels", default: {}, null: false
+    t.jsonb "multi_classing", default: {}, null: false
+    t.jsonb "spellcasting", default: {}, null: false
+    t.jsonb "spells", default: {}, null: false
+    t.jsonb "starting_equipment", default: {}, null: false
+    t.jsonb "starting_equipment_options", default: {}, null: false
+    t.jsonb "proficiency_choises", default: {}, null: false
+    t.jsonb "proficiencies", default: {}, null: false
+    t.jsonb "saving_throws", default: {}, null: false
+    t.jsonb "subclasses", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,24 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_29_172709) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_characters_on_user_id"
-  end
-
-  create_table "chararacter_classes", force: :cascade do |t|
-    t.string "index"
-    t.string "name"
-    t.integer "hit_die"
-    t.jsonb "class_levels", default: {}, null: false
-    t.jsonb "multi_classing", default: {}, null: false
-    t.jsonb "spellcasting", default: {}, null: false
-    t.jsonb "spells", default: {}, null: false
-    t.jsonb "starting_equipment", default: {}, null: false
-    t.jsonb "starting_equipment_options", default: {}, null: false
-    t.jsonb "proficiency_choises", default: {}, null: false
-    t.jsonb "proficiencies", default: {}, null: false
-    t.jsonb "saving_throws", default: {}, null: false
-    t.jsonb "subclasses", default: {}, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -135,20 +135,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_29_172709) do
     t.string "index"
     t.string "name"
     t.text "desc", default: [], array: true
-    t.string "higher_level"
+    t.string "higher_level", default: [], array: true
     t.string "range"
     t.text "components", default: [], array: true
     t.string "material"
-    t.boolean "ritual"
+    t.boolean "ritual", default: false
     t.string "duration"
-    t.boolean "concetration"
+    t.boolean "concetration", default: false
     t.string "casting_time"
     t.integer "level"
-    t.string "attack_type"
-    t.jsonb "damage", default: {}, null: false
-    t.jsonb "school", default: {}, null: false
-    t.jsonb "classes", default: {}, null: false
-    t.jsonb "subclasses", default: {}, null: false
+    t.jsonb "damage", default: {}
+    t.jsonb "dc"
+    t.jsonb "area_of_effect"
+    t.jsonb "school", default: {}
+    t.jsonb "classes", default: {}
+    t.jsonb "subclasses", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -157,11 +158,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_29_172709) do
     t.string "index"
     t.string "name"
     t.string "desc", default: [], array: true
-    t.jsonb "races", default: {}, null: false
-    t.jsonb "subraces", default: {}, null: false
-    t.jsonb "proficiencies", default: {}, null: false
-    t.jsonb "proficiency_choices", default: {}, null: false
-    t.jsonb "trait_specific", default: {}, null: false
+    t.jsonb "races", default: {}
+    t.jsonb "subraces", default: {}
+    t.jsonb "parent", default: {}
+    t.jsonb "proficiencies", default: {}
+    t.jsonb "proficiency_choices", default: {}
+    t.jsonb "trait_specific", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -177,6 +179,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_29_172709) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
