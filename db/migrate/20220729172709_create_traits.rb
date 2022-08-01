@@ -4,11 +4,12 @@ class CreateTraits < ActiveRecord::Migration[7.0]
       t.string :index
       t.string :name
       t.string :desc, array: true, default: []
-      t.jsonb :races, null: false, default: {}
-      t.jsonb :subraces, null: false, default: {}
-      t.jsonb :proficiencies, null: false, default: {}
-      t.jsonb :proficiency_choices, null: false, default: {}
-      t.jsonb :trait_specific, null: false, default: {}
+      t.jsonb :races, default: {}
+      t.jsonb :subraces, default: {}
+      t.jsonb :parent, default: {}
+      t.jsonb :proficiencies, default: {}
+      t.jsonb :proficiency_choices, default: {}
+      t.jsonb :trait_specific, default: {}
 
       t.timestamps null: false
     end
