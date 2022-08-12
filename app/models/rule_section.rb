@@ -1,0 +1,2 @@
+class RuleSection < ApplicationRecord
+end

@@ -79,6 +79,16 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+  #test test
 group :development, :test do
   gem 'rspec-rails', '~> 6.0.0rc1'
 end
+
+#database cleaner on seed
+group :test do
+  gem 'database_cleaner-active_record'
+  gem 'database_cleaner-redis'
+end
+
+gem 'pry-byebug'
