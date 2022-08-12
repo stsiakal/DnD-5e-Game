@@ -5,9 +5,9 @@ class CreateAbilityScores < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :desc
       t.string :full_name
-      t.jsonb :skills, null: false, default: {}
+      t.jsonb :skills, default: {}
 
-      t.timestamps null: false
+      t.timestamps
     end
   end
 end
