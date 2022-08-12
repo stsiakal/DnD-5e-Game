@@ -34,6 +34,7 @@ gem "devise"
 gem 'sidekiq'
 gem "sidekiq-failures", "~> 1.0"
 
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -77,4 +78,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+end
+group :development, :test do
+  gem 'rspec-rails', '~> 6.0.0rc1'
 end
