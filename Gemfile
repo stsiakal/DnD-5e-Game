@@ -29,11 +29,12 @@ gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
-gem 'bullet', group: 'development'
+group :development, :test do
+  gem "bullet"
+end
 gem "devise"
 gem 'sidekiq'
 gem "sidekiq-failures", "~> 1.0"
-
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -80,12 +81,12 @@ group :test do
   gem "webdrivers"
 end
 
-  #test test
+# test test
 group :development, :test do
   gem 'rspec-rails', '~> 6.0.0rc1'
 end
 
-#database cleaner on seed
+# database cleaner on seed
 group :test do
   gem 'database_cleaner-active_record'
   gem 'database_cleaner-redis'
