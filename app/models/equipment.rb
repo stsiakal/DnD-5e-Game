@@ -9,7 +9,7 @@ class Equipment < ApplicationRecord
 
   private
 
-    # Checks if there is only one equipment record.
+  # Checks if there is only one equipment record.
   def there_can_only_be_one
     errors.add('Cannot have more than one equipment record') if Equipment.count.positive?
   end
