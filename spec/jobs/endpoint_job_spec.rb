@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe EndpointJob, type: :job do
-  pending "add some examples to (or delete) #{__FILE__}"
+  include Workify
+  ActiveJob::Base.queue_adapter = :test
+
 end

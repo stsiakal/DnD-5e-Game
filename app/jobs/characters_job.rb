@@ -1,7 +1,7 @@
-class CharactersJob < ApplicationJob
+class CharacterJob < ApplicationJob
   queue_as :default
-
-  def perform(*args)
+  include Workify
+  def perform(api)
     # Do something later
   end
 end

@@ -1,5 +1,5 @@
 class Equipment < ApplicationRecord
-  validate :there_can_only_be_one
+  validate :there_can_only_be_one, on: :create
   has_many :weapons, as: :equipment, dependent: :destroy
   has_many :armor_and_shields, as: :equipment, dependent: :destroy
   has_many :adventuring_gears, as: :equipment, dependent: :destroy

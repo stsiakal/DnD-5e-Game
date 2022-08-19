@@ -3,7 +3,7 @@ require 'net/http'
 require 'json'
 
 module Workify
-  # Make a call to the dnd5e API
+  # Make a call to the dnd5e API and gets all the endpoints that are available
   def url_call(data = '/api')
     url = URI("https://www.dnd5eapi.co#{data}")
     http = Net::HTTP.new(url.hostname, url.port)

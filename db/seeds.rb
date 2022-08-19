@@ -5,7 +5,7 @@ DatabaseCleaner.clean_with(:truncation)
 
 # Run seed job now.
 starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-MegaSeedJob.perform_now
+MegaSeedJob.perform_later
 ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 elapsed = ending - starting
-puts "#{elapsed * 60}"
+puts elapsed * 60
