@@ -1,5 +1,5 @@
 class MegaSeedJob < ApplicationJob
-  queue_as :low
+  queue_as :default
   include Workify
 
   def perform

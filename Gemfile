@@ -87,9 +87,8 @@ group :development, :test do
 end
 
 # database cleaner on seed
-group :test do
+group :development, :test do
   gem 'database_cleaner-active_record'
-  gem 'database_cleaner-redis'
 end
 
 gem 'pry-byebug'

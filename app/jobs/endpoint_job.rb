@@ -4,6 +4,7 @@ class EndpointJob < ApplicationJob
 
   def perform(index)
     urls_data = []
+    # Calls the url_call endpoint and returns the data
     data = url_call(index)
     # Calls a URL and Returns an array of urls.
     data.each do |count, results|
